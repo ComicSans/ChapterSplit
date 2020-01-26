@@ -152,7 +152,7 @@ namespace AudioChapterSplit
                     // add track number title as tag
                     arguments += $"-metadata track={track} \"{target}\"";
                     
-                    Console.WriteLine($"Extracting {track}/{chapters.Length}: '{track:D2} - {chapter.Tags.Title}' from '{formatDescriptions.Tags.Album}'");
+                    Console.WriteLine($"Extracting {track}: '{track:D2} - {chapter.Tags.Title}' from '{formatDescriptions.Tags.Album}'");
 
                     var pExtract = new Process
                     {
