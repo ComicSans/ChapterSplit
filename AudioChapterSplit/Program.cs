@@ -121,7 +121,7 @@ namespace AudioChapterSplit
                 {
                     track++;
                     Console.WriteLine($"Trying to create \"{track:D2} - {chapter.Tags.Title}.mp3\" into folder \"{folder}\"");
-                    var target = Path.Combine(folder, $"{chapter.Tags.Title}{fileExtension}".ToFilePathSafeString());
+                    var target = Path.Combine(folder, $"{track}_{chapter.Tags.Title}{fileExtension}".ToFilePathSafeString());
 
                     // remove existing file
                     if (File.Exists(target)) {
