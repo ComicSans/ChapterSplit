@@ -1,8 +1,8 @@
 ﻿using System.Reflection;
 
-[assembly: AssemblyTitle("AudioChapterSplit")]
+[assembly: AssemblyTitle("ChapterSplit")]
 [assembly: AssemblyCompany("Tobias Reithmeier")]
-[assembly: AssemblyProduct("AudioChapterSplit")]
+[assembly: AssemblyProduct("ChapterSplit")]
 [assembly: AssemblyCopyright("Copyright © 2020")]
 [assembly: AssemblyTrademark("")]
 

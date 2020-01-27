@@ -11,8 +11,8 @@
     <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
     <ProjectGuid>{E600A1DE-4F6C-4530-9BB2-1D94148F71BA}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>AudioChapterSplit</RootNamespace>
-    <AssemblyName>AudioChapterSplit</AssemblyName>
+    <RootNamespace>ChapterSplit</RootNamespace>
+    <AssemblyName>ChapterSplit</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

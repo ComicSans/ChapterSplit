@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AudioChapterSplit", "AudioChapterSplit\AudioChapterSplit.csproj", "{E600A1DE-4F6C-4530-9BB2-1D94148F71BA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChapterSplit", "ChapterSplit\ChapterSplit.csproj", "{E600A1DE-4F6C-4530-9BB2-1D94148F71BA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

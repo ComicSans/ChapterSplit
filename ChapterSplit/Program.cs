@@ -48,7 +48,7 @@ namespace AudioChapterSplit
                     // we want to split the file by chapters
                     foreach (string inputFile in parsedResult.SourceFiles)
                     {
-                        new Split(inputFile, parsedResult.Verbose).Encode();
+                        new Split(inputFile, parsedResult.Debug).Encode();
                     }
                 }
             }
