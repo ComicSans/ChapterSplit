@@ -1,9 +1,8 @@
 ﻿using CommandLine;
 using System.Collections.Generic;
 
-namespace AudioChapterSplit
+namespace ChapterSplit
 {
-    
     public class Options
     {
         private readonly IEnumerable<string> _sourceFiles;
@@ -17,16 +16,13 @@ namespace AudioChapterSplit
             this._merge = Merge;
         }
 
-        [Option('i', "Input", HelpText = "MP3/M4B/M4A files to split (separated by \" \", no wildcards allowed)")]
-        public IEnumerable<string> SourceFiles { get { return this._sourceFiles; }  }
+        [Option('i', "Input", HelpText = "MP3/M4B/M4A files to split (separated by \" \", no wildcards allowed)", Required = true)]
+        public IEnumerable<string> SourceFiles { get { return this._sourceFiles; } }
 
         [Option('d', "Debug", HelpText = "Show debug output")]
         public bool Debug { get { return this._debug; } }
 
         [Option('m', "Merge", HelpText = "Merge input files")]
         public bool Merge { get { return this._merge; } }
-
-
     }
-
 }

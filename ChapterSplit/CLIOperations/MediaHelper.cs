@@ -1,13 +1,13 @@
-﻿using AudioChapterSplit.ffprobeOutput;
+﻿using ChapterSplit.ffprobeOutput;
+using Newtonsoft.Json;
 using System;
 using System.Diagnostics;
 using System.IO;
 
-namespace AudioChapterSplit
+namespace ChapterSplit
 {
-    class MediaHelper
+    internal class MediaHelper
     {
-
         private static void ExtractCoverArt(string inputFile, string outputPath)
         {
             var p = new Process
@@ -16,7 +16,7 @@ namespace AudioChapterSplit
                         {
                             UseShellExecute = false,
                             RedirectStandardOutput = true,
-                            FileName = ".\\ffmpeg\\ffmpeg.exe",
+                            FileName = $"{AppDomain.CurrentDomain.BaseDirectory}\\ffmpeg\\ffmpeg.exe",
                             Arguments = $" -i \"{inputFile}\" -hide_banner -loglevel panic -c copy -map 0:v -map -0:V -vframes 1 \"{outputPath}\" "
                         }
             };
@@ -25,6 +25,35 @@ namespace AudioChapterSplit
             p.StandardOutput.ReadToEnd();
             p.WaitForExit();
             p.Dispose();
+        }
+
+        public static RootObject GetMediaInfo(string inputFile)
+        {
+            // using ffprobe, extract chapter list and info (album, artist, date, ...) from file.
+            // Command is : ffprobe -print_format json -show_chapters -show_format <filename>
+
+            // Redirect the output stream of the child process.
+
+            var p = new Process
+            {
+                StartInfo =
+                        {
+                            UseShellExecute = false,
+                            RedirectStandardOutput = true,
+                            FileName = $"{AppDomain.CurrentDomain.BaseDirectory}\\ffmpeg\\ffprobe.exe",
+                            Arguments = $"-hide_banner -loglevel panic -print_format json -show_chapters -show_format \"{inputFile}\""
+                        }
+            };
+
+            // Start the child process.
+            p.Start();
+
+            // Read the output stream first and then wait.
+            var output = p.StandardOutput.ReadToEnd();
+            p.WaitForExit();
+            p.Dispose();
+
+            return JsonConvert.DeserializeObject<ffprobeOutput.RootObject>(output);
         }
 
         public static string GetCover(string source, string folder)
