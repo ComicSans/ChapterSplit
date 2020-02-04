@@ -61,7 +61,7 @@ namespace ChapterSplit.CLIOperations
                                 UseShellExecute = false,
                                 WorkingDirectory = this.workingDir,
                                 FileName = $"{AppDomain.CurrentDomain.BaseDirectory}\\ffmpeg\\ffmpeg.exe",
-                                Arguments = $"-i \".\\metadata.txt\" {Inputs}-filter_complex concat=n={numberOfFiles}:v=0:a=1 -map_metadata 0 -map_chapters 0 -vn -c:a libfdk_aac -vbr 3 -vn -movflags +faststart -f mp4 -y {this.Verbose} ~tmp.m4b"
+                                Arguments = $"-i \".\\metadata.txt\" {Inputs}-filter_complex concat=n={numberOfFiles}:v=0:a=1 -map_metadata 0 -map_chapters 0 -vn -c:a libfdk_aac -vbr 3 -vn -movflags +faststart -f mp4 -y {this.Verbose} \".\\~tmp.m4b\""
                             }
             };
             pMerge.Start();
@@ -75,7 +75,7 @@ namespace ChapterSplit.CLIOperations
                                 UseShellExecute = false,
                                 WorkingDirectory = this.workingDir,
                                 FileName = $"{AppDomain.CurrentDomain.BaseDirectory}\\ffmpeg\\ffmpeg.exe",
-                                Arguments = $"-i \".\\~tmp.m4b\" -i \".\\cover.png\" -map 0:0 -map 1:0 -c copy -id3v2_version 3 -metadata:s:v title=\"Album cover\" -metadata:s:v comment=\"Cover (front)\" -y -f mp4 {this.Verbose} \"{this.formatDescriptions.Tags.Artist} - {this.formatDescriptions.Tags.Album}.m4b\""
+                                Arguments = $"-i \".\\~tmp.m4b\" -i \".\\cover.png\" -map 0:0 -map 1:0 -c copy -id3v2_version 3 -metadata:s:v title=\"Album cover\" -metadata:s:v comment=\"Cover (front)\" -y -f mp4 {this.Verbose} \"{this.formatDescriptions.Tags.Artist.ToFilePathSafeString()} - {this.formatDescriptions.Tags.Album.ToFilePathSafeString()}.m4b\""
                             }
             };
             pMetadata.Start();

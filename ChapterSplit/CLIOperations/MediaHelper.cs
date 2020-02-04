@@ -75,7 +75,7 @@ namespace ChapterSplit
 
             try
             {
-                folder += Path.Combine(path, $"{formatDescriptions.Tags.Album.ToFilePathSafeString()}");
+                folder += Path.Combine(path, $"{formatDescriptions.Tags.Artist.ToFilePathSafeString()} - {formatDescriptions.Tags.Album.ToFilePathSafeString()}");
             }
             catch (Exception)
             {
