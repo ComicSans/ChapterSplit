@@ -1,15 +1,15 @@
+using ChapterSplit.CLIOperations;
 using CommandLine;
+using CommandLine.Text;
 using System;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
-using CommandLine.Text;
 
-namespace AudioChapterSplit
+namespace ChapterSplit
 {
     internal class Program
     {
-
         private static void Main(string[] args)
         {
             var parser = new Parser(config => config.HelpWriter = null);
@@ -42,13 +42,14 @@ namespace AudioChapterSplit
                 if (parsedResult.Merge)
                 {
                     // we want to merge the files
+                    new MergeOperation(parsedResult.SourceFiles, parsedResult.Debug).Run();
                 }
                 else
                 {
                     // we want to split the file by chapters
                     foreach (string inputFile in parsedResult.SourceFiles)
                     {
-                        new Split(inputFile, parsedResult.Verbose).Encode();
+                        new SplitOperation(inputFile, parsedResult.Debug).Run();
                     }
                 }
             }
@@ -84,6 +85,5 @@ namespace AudioChapterSplit
             nHelpText.AddOptions(result);
             return HelpText.DefaultParsingErrorsHandler(result, nHelpText);
         }
-
     }
 }

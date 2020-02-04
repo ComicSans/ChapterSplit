@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace AudioChapterSplit.ffprobeOutput
+namespace ChapterSplit.ffprobeOutput
 {
     public class RootObject
     {

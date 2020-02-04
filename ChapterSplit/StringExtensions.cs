@@ -1,14 +1,14 @@
 using System.IO;
 using System.Linq;
 
-namespace AudioChapterSplit
+namespace ChapterSplit
 {
     public static class StringExtensions
     {
         public static string ToFilePathSafeString(this string source, char replaceChar = '_')
         {
             return Path.GetInvalidFileNameChars().Aggregate(source,
-                (current, invalidFileNameChar) => current.Replace(invalidFileNameChar, replaceChar)).TrimEnd(' ','.');
+                (current, invalidFileNameChar) => current.Replace(invalidFileNameChar, replaceChar)).TrimEnd(' ', '.');
         }
     }
 }
